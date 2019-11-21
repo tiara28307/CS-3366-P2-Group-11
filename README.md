@@ -12,6 +12,7 @@
 
 ## Pong Arcade Game
 ![Screen Shot 2019-11-21 at 5 28 01 PM](https://user-images.githubusercontent.com/36643475/69385468-0c041800-0c85-11ea-897b-6e3886f89e8b.png)
+![Screen Shot 2019-11-21 at 5 42 44 PM](https://user-images.githubusercontent.com/36643475/69385869-63ef4e80-0c86-11ea-9fef-4eae30859089.png)
 
 ## Sketch
 ![FinalProject (1)](https://user-images.githubusercontent.com/36643475/69385739-f5aa8c00-0c85-11ea-93fc-d8c065eac48d.png)
