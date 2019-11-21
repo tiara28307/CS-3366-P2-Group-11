@@ -11,5 +11,5 @@
 ![IMG_4064](https://user-images.githubusercontent.com/36643475/69385048-baa75900-0c83-11ea-8903-56f9a601aeca.jpg)
 
 ## Pong Arcade Game
-![Screen Shot 2019-11-21 at 5 29 11 PM](https://user-images.githubusercontent.com/36643475/69385437-f131a380-0c84-11ea-933e-e155dedf0f5d.png)![Screen Shot 2019-11-21 at 5 28 01 PM](https://user-images.githubusercontent.com/36643475/69385468-0c041800-0c85-11ea-897b-6e3886f89e8b.png)
+![Screen Shot 2019-11-21 at 5 29 11 PM](https://user-images.githubusercontent.com/36643475/69385437-f131a380-0c84-11ea-933e-e155dedf0f5d.png)![Screen Shot 2019-11-21 at 5 28 01 PM](https://user-images.githubusercontent.com/36643475/69385468-0c041800-0c85-11ea-897b-6e3886f89e8b.png| width=48)
 
