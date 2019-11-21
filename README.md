@@ -2,8 +2,8 @@
 # Game Interface: Pong Game 
 
 ## Team Members
- Nathaniel Rawskins 
- Mauricio Barbier
- Ti'Ara Carroll
- Benjamin Fischer
- Bonny Barragan
+ - Nathaniel Rawskins 
+ - Mauricio Barbier
+ - Ti'Ara Carroll
+ - Benjamin Fischer
+ - Bonny Barragan
