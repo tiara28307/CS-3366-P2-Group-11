@@ -25,10 +25,10 @@
 ![FinalProject (1)](https://user-images.githubusercontent.com/36643475/69385739-f5aa8c00-0c85-11ea-93fc-d8c065eac48d.png)
 
 #### Implementation
--- Early stages in implementation
--- Working on handtracking js query (motion sensor)
+- Early stages in implementation
+- Working on handtracking js query (motion sensor)
 
 #### Plans Moving Forward
--- Functionality of UI
--- Revisions/Modifications improve interactivity
--- Testing 
+- Functionality of UI
+- Revisions/Modifications improve interactivity
+- Testing 
