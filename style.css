@@ -1,0 +1,64 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.btn 
+{
+  background-color: white;
+  border: none;
+  color: #080FFF;
+  padding: 10px 10px;
+  font-size: 40px;
+  cursor: pointer;
+  position: relative;
+  left: 105px;
+  top: 400px;
+  border-radius: 10px;
+  font-family: 'Black Ops One', serif;
+}
+
+.btn:hover 
+{
+  background-color: #E14141;
+}
+
+.backbtn
+{
+  background-color: white;
+  border: none;
+  color: #080FFF;
+  padding: 8px 10px;
+  font-size: 30px;
+  cursor: pointer;
+  position: relative;
+  left: 650px;
+  top: 585px;
+  border-radius: 10px;
+}
+
+.backbtn:hover 
+{
+  background-color: #E14141;
+}
+
+.video
+{
+  background-color: white;
+  border: none;
+  color: #080FFF;
+  padding: 8px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  left: 550px;
+  top: 210px;
+  border-radius: 10px;
+  
+}
+
+.video:hover
+{
+  background-color: #E14141;
+}
