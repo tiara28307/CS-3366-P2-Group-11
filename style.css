@@ -1,6 +1,8 @@
 html, body {
   margin: 0;
   padding: 0;
+  position: center;
+  background-color: "#676767";
 }
 
 
@@ -13,7 +15,7 @@ html, body {
   font-size: 40px;
   cursor: pointer;
   position: relative;
-  left: 105px;
+  left: 10%;
   top: 400px;
   border-radius: 10px;
   font-family: 'Black Ops One', serif;
