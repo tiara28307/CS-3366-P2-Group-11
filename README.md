@@ -33,7 +33,7 @@
 - Testing 
 
 ## User Study
-![Screen Shot 2019-12-02 at 10 24 29 AM](https://user-images.githubusercontent.com/36643475/69976056-f8ab4500-14ed-11ea-80e3-30cb712a27dc.png)
+
 
 #### Demo Link:
 https://tiara28307.github.io/CS-3366-P2-Group-11/
