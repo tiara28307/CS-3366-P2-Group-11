@@ -31,3 +31,6 @@
 - Functionality of UI
 - Revisions/Modifications improve interactivity
 - Testing 
+
+Demo Link:
+https://tiara28307.github.io/CS-3366-P2-Group-11/
