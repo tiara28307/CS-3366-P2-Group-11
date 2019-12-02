@@ -34,6 +34,8 @@
 
 ## User Study
 ![Screen Shot 2019-12-02 at 10 26 02 AM](https://user-images.githubusercontent.com/36643475/69976196-327c4b80-14ee-11ea-805c-0c97737293fa.png)
+![Capture1](https://user-images.githubusercontent.com/36643475/69992948-6b2d1c80-1510-11ea-9d9f-6990612f59cd.PNG)
+![Capture](https://user-images.githubusercontent.com/36643475/69992951-6cf6e000-1510-11ea-9083-0bc63693f573.PNG)
 
 #### Demo Link:
 https://tiara28307.github.io/CS-3366-P2-Group-11/
