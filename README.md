@@ -33,6 +33,7 @@
 - Testing 
 
 ## User Study
-[User Study Group 11 Pong Game.pdf](https://github.com/tiara28307/CS-3366-P2-Group-11/files/3912152/User.Study.Group.11.Pong.Game.pdf)
-Demo Link:
+[User Study.txt](https://github.com/tiara28307/CS-3366-P2-Group-11/files/3912164/User.Study.txt)
+
+#### Demo Link:
 https://tiara28307.github.io/CS-3366-P2-Group-11/
