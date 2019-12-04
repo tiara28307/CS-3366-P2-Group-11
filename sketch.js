@@ -1,19 +1,41 @@
+
 var animate = window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   function(callback) { window.setTimeout(callback, 1000/60) };
-
+var Playerscore = 0;
+var CPUscore = 0;
 var canvas = document.createElement('canvas');
-var width = 400;
-var height = 600;
+var width = window.innerWidth;
+var height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 var context = canvas.getContext('2d');
+var result;
+
 
 window.onload = function() {
   document.body.appendChild(canvas);
   animate(step);
+  
+  
 };
+
+
+
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.pause();
+    });
+}
+
+
 
 var step = function() {
   update();
@@ -45,11 +67,11 @@ Paddle.prototype.render = function() {
 };
 
 function Player() {
-   this.paddle = new Paddle(175, 580, 60, 15);
+   this.paddle = new Paddle(175, 580, 65, 15);
 }
 
 function Computer() {
-  this.paddle = new Paddle(175, 10, 60, 15);
+  this.paddle = new Paddle(175, 10, 65, 15);
 }
 
 Player.prototype.render = function() {
@@ -71,8 +93,21 @@ function Ball(x, y) {
 Ball.prototype.render = function() {
   context.beginPath();
   context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+  //Score keeping 
+  context.font = "40px Black Ops One";
   context.fillStyle = "#00E500";
   context.fill();
+  context.fillText("Score ", 438, 290);
+  context.font = "25px Black Ops One";
+  context.fillStyle = "#0080FF";
+  context.fill();
+  context.fillText("Player: "+ Playerscore, 438, 340);
+  context.fillStyle = "#FF0000";
+  context.fill();
+  context.fillText("CPU: "+ CPUscore, 438, 380);
+  context.fillStyle = "#00E500";
+  context.fill();
+  
 };
 
 var player = new Player();
@@ -107,6 +142,7 @@ Ball.prototype.update = function(paddle1, paddle2) {
   var top_y = this.y - 5;
   var bottom_x = this.x + 5;
   var bottom_y = this.y + 5;
+  
 
   if(this.x - 5 < 0) { // hitting the left wall
     this.x = 5;
@@ -115,13 +151,49 @@ Ball.prototype.update = function(paddle1, paddle2) {
     this.x = 395;
     this.x_speed = -this.x_speed;
   }
-
-  if(this.y < 0 || this.y > 600) { // a point was scored
+  
+  if (this.y<0) {
     this.x_speed = 0;
     this.y_speed = 3;
     this.x = 200;
     this.y = 300;
+    Playerscore++;
   }
+  
+  if(this.y > 600) { // a point was scored
+    this.x_speed = 0;
+    this.y_speed = 3;
+    this.x = 200;
+    this.y = 300;
+    CPUscore++;
+    // Game over alert message screen
+    /*if (CPUscore == 2)
+    {
+      alert("GAME OVER!");
+      result = window.confirm("Play Again?");
+      if (result = true)
+      {
+        alert("Goodbye!");
+        document.location.reload();
+      }
+      else
+      {
+        CPUscore = 0;
+        Playerscore = 0;
+      }
+      result = window.confirm("Game Over! Want to play again?");
+      if (result = true) {
+        CPUscore = 0;
+      }
+      else
+      {
+        result = window.open("Thanks for playing!");
+        CPUscore = 0;
+        Playerscore = 0;
+        off();
+      } */
+        
+    }
 
   if(top_y > 300) {
     if(top_y < (paddle1.y + paddle1.height) && bottom_y > paddle1.y && top_x < (paddle1.x + paddle1.width) && bottom_x > paddle1.x) {
@@ -138,6 +210,8 @@ Ball.prototype.update = function(paddle1, paddle2) {
       this.y += this.y_speed;
     }
   }
+  
+  
 };
 
 var keysDown = {};
