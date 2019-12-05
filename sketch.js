@@ -1,4 +1,5 @@
-
+var Playerscore = 0;
+var CPUscore = 0;
 var animate = window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
   window.mozRequestAnimationFrame ||
@@ -88,6 +89,18 @@ function Ball(x, y) {
 Ball.prototype.render = function() {
   context.beginPath();
   context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+  //Score keeping for Players
+  context.font = "40px Black Ops One";
+  context.fillStyle = "#00E500";
+  context.fill();
+  context.fillText("Score ", 438, 290);
+  context.font = "25px Black Ops One";
+  context.fillStyle = "#0080FF";
+  context.fill();
+  context.fillText("Player: "+ Playerscore, 438, 340);
+  context.fillStyle = "#FF0000";
+  context.fill();
+  context.fillText("CPU: "+ CPUscore, 438, 380);
   context.fillStyle = "#00E500";
   context.fill();
 };
@@ -133,11 +146,21 @@ Ball.prototype.update = function(paddle1, paddle2) {
     this.x_speed = -this.x_speed;
   }
 
-  if(this.y < 0 || this.y > 600) { // a point was scored
+  // Score tracker for player
+  if(this.y < 0) {
     this.x_speed = 0;
     this.y_speed = 3;
     this.x = 200;
     this.y = 300;
+    Playerscore++;
+  }
+  // Score tracker for CPU
+  if(this.y > 600) { 
+    this.x_speed = 0;
+    this.y_speed = 3;
+    this.x = 200;
+    this.y = 300;
+    CPUscore++;
   }
 
   if(top_y > 300) {
