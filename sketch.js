@@ -1,3 +1,107 @@
+var audio = new Audio('https://raw.githubusercontent.com/tiara28307/CS-3366-P2-Group-11/master/01%20-%20Title%20Theme.mp3');
+audio.play();
+
+function cameraOn(){
+  audio.play();
+}
+
+function cameraOff(){
+  audio.pause();
+}
+const video = document.getElementById("myvideo");
+const canvas2 = document.getElementById("canvas2");
+const context2 = canvas2.getContext("2d");
+let trackButton = document.getElementById("trackbutton");
+let updateNote = document.getElementById("updatenote");
+
+let imgindex = 1
+let isVideo = true;
+let model = null;
+let videoInterval = 300
+var where;
+var keysDown = {};
+
+// video.width = 500
+// video.height = 400
+
+
+const modelParams = {
+    flipHorizontal: true, // flip e.g for video  
+    maxNumBoxes: 1, // maximum number of boxes to detect
+    iouThreshold: 0.5, // ioU threshold for non-max suppression
+    scoreThreshold: 0.6, // confidence threshold for predictions.
+}
+
+function startVideo() {
+    handTrack.startVideo(video).then(function (status) {
+        console.log("video started", status);
+        if (status) {
+            isVideo = true
+            runDetection()
+        } else {
+            updateNote.innerText = "Please enable video"
+        }
+    });
+}
+
+startVideo();
+
+
+function runDetection() {
+    model.detect(video).then(predictions => {
+        // console.log("Predictions: ", predictions);
+        // get the middle x value of the bounding box and map to paddle location
+        model.renderPredictions(predictions, canvas2, context2, video);
+        if (predictions[0]!=null) {
+            let midval = predictions[0].bbox[0] + (predictions[0].bbox[2] / 2)
+            gamex = document.body.clientWidth * (midval / video.width)
+          where = gamex;
+            console.log('Predictions: ', gamex);
+          if(gamex>440){
+            delete keysDown[39];
+              keysDown[39] = true;
+            delete keysDown[37];
+            console.log(keysDown);
+          }
+          else{
+            delete keysDown[39];
+          }
+          if(gamex<230){
+              keysDown[37] = true;
+            delete keysDown[39];
+          }
+          else{
+            delete keysDown[37];
+          }
+                  }
+      else{
+        delete keysDown[39];
+        delete keysDown[37];
+      
+      }
+        if (isVideo) {
+            setTimeout(() => {
+                runDetection(video)
+            }, videoInterval);
+        }
+    });
+}
+
+// Load the model.
+handTrack.load(modelParams).then(lmodel => {
+    // detect objects in the image.
+    model = lmodel
+    trackButton.disabled = false
+
+    $(".overlaycenter").animate({
+        opacity: 0,
+        fontSize: "0vw"
+    }, pauseGameAnimationDuration, function () {
+        $(".pauseoverlay").hide()
+    });
+});
+
+
 var Playerscore = 0;
 var CPUscore = 0;
 var animate = window.requestAnimationFrame ||
@@ -12,39 +116,13 @@ canvas.width = width;
 canvas.height = height;
 var context = canvas.getContext('2d');
 
-// sounds:
-var c_noise = new Audio("boop.wav");
-var p_noise = new Audio("beep.mp3");
-var score = new Audio("score.wav");
-var badScore = new Audio("badScore.wav");
-var g_o = new Audio("game_over.wav");
-var song = new Audio("song4.wav");
-var pause = new Audio("unpause.mp3");
-var unpause = new Audio("Pause.mp3");
-var playStart = new Audio("Play.mp3");
-var cameraOn = new Audio("cameraOn.wav");
-var cameraOff = new Audio("cameraOff.wav");
-var loose = new Audio("loose.wav");
-var win = new Audio("win.wav");
+
 
 window.onload = function() {
   document.body.appendChild(canvas);
   animate(step);
   
 };
-
-var video = document.getElementById('video');
-
-// Get access to the camera!
-if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Not adding `{ audio: true }` since we only want video now
-    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-        //video.src = window.URL.createObjectURL(stream);
-        video.srcObject = stream;
-        video.pause();
-    });
-}
-
 
 
 
@@ -60,6 +138,7 @@ var update = function() {
 var render = function() {
   context.fillStyle = "#676767";
   context.fillRect(0, 0, width, height);
+  
 };
 
 
@@ -163,7 +242,6 @@ Ball.prototype.update = function(paddle1, paddle2) {
 
   // Score tracker for player
   if(this.y < 0) {
-    score.play();
     this.x_speed = 0;
     this.y_speed = 3;
     this.x = 200;
@@ -172,7 +250,6 @@ Ball.prototype.update = function(paddle1, paddle2) {
   }
   // Score tracker for CPU
   if(this.y > 600) { 
-    badScore.play();
     this.x_speed = 0;
     this.y_speed = 3;
     this.x = 200;
@@ -183,7 +260,6 @@ Ball.prototype.update = function(paddle1, paddle2) {
   if(top_y > 300) {
     if(top_y < (paddle1.y + paddle1.height) && bottom_y > paddle1.y && top_x < (paddle1.x + paddle1.width) && bottom_x > paddle1.x) {
       // hit the player's paddle
-      p_noise.play();
       this.y_speed = -3;
       this.x_speed += (paddle1.x_speed / 2);
       this.y += this.y_speed;
@@ -191,7 +267,6 @@ Ball.prototype.update = function(paddle1, paddle2) {
   } else {
     if(top_y < (paddle2.y + paddle2.height) && bottom_y > paddle2.y && top_x < (paddle2.x + paddle2.width) && bottom_x > paddle2.x) {
       // hit the computer's paddle
-      c_noise.play();
       this.y_speed = 3;
       this.x_speed += (paddle2.x_speed / 2);
       this.y += this.y_speed;
