@@ -13,10 +13,11 @@ html, body {
   color: #080FFF;
   padding: 10px 10px;
   font-size: 40px;
-  cursor: pointer;
-  position: relative;
-  left: 18%;
-  top: 400px;
+  cursor: pointer; 
+  position: absolute;
+  top:  45%;      
+  left: 50%;
+  transform: translate(-50%,-50%);
   border-radius: 10px;
   font-family: 'Black Ops One', serif;
 }
@@ -45,7 +46,7 @@ html, body {
   background-color: #E14141;
 }
 
-.video
+.music
 {
   background-color: white;
   border: none;
@@ -54,13 +55,13 @@ html, body {
   font-size: 20px;
   cursor: pointer;
   position: relative;
-  left: 550px;
-  top: 210px;
+  left: 552px;
+  top: 212px;
   border-radius: 10px;
   
 }
 
-.video:hover
+.music:hover
 {
   background-color: #E14141;
 }

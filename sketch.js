@@ -1,3 +1,97 @@
+const video = document.getElementById("myvideo");
+const canvas2 = document.getElementById("canvas2");
+const context2 = canvas2.getContext("2d");
+let trackButton = document.getElementById("trackbutton");
+let updateNote = document.getElementById("updatenote");
+
+let imgindex = 1
+let isVideo = true;
+let model = null;
+let videoInterval = 300
+var where;
+var keysDown = {};
+
+// video.width = 500
+// video.height = 400
+
+
+const modelParams = {
+    flipHorizontal: true, // flip e.g for video  
+    maxNumBoxes: 1, // maximum number of boxes to detect
+    iouThreshold: 0.5, // ioU threshold for non-max suppression
+    scoreThreshold: 0.6, // confidence threshold for predictions.
+}
+
+function startVideo() {
+    handTrack.startVideo(video).then(function (status) {
+        console.log("video started", status);
+        if (status) {
+            isVideo = true
+            runDetection()
+        } else {
+            updateNote.innerText = "Please enable video"
+        }
+    });
+}
+
+startVideo();
+
+
+function runDetection() {
+    model.detect(video).then(predictions => {
+        // console.log("Predictions: ", predictions);
+        // get the middle x value of the bounding box and map to paddle location
+        model.renderPredictions(predictions, canvas2, context2, video);
+        if (predictions[0]!=null) {
+            let midval = predictions[0].bbox[0] + (predictions[0].bbox[2] / 2)
+            gamex = document.body.clientWidth * (midval / video.width)
+          where = gamex;
+            console.log('Predictions: ', gamex);
+          if(gamex>440){
+            delete keysDown[39];
+              keysDown[39] = true;
+            delete keysDown[37];
+            console.log(keysDown);
+          }
+          else{
+            delete keysDown[39];
+          }
+          if(gamex<230){
+              keysDown[37] = true;
+            delete keysDown[39];
+          }
+          else{
+            delete keysDown[37];
+          }
+                  }
+      else{
+        delete keysDown[39];
+        delete keysDown[37];
+      
+      }
+        if (isVideo) {
+            setTimeout(() => {
+                runDetection(video)
+            }, videoInterval);
+        }
+    });
+}
+
+// Load the model.
+handTrack.load(modelParams).then(lmodel => {
+    // detect objects in the image.
+    model = lmodel
+    trackButton.disabled = false
+
+    $(".overlaycenter").animate({
+        opacity: 0,
+        fontSize: "0vw"
+    }, pauseGameAnimationDuration, function () {
+        $(".pauseoverlay").hide()
+    });
+});
+
+
 var Playerscore = 0;
 var CPUscore = 0;
 var animate = window.requestAnimationFrame ||
@@ -19,7 +113,7 @@ window.onload = function() {
   
 };
 
-var video = document.getElementById('video');
+/*var video = document.getElementById('video');
 
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -29,7 +123,7 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.pause();
     });
-}
+} */
 
 
 

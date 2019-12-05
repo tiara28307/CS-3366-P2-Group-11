@@ -1,13 +1,15 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html lang="en"><head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black Ops One">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P">
-    <style>
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components@latest/css/carbon-components.css">
+    <link rel="stylesheet" href="track.css">
+  <style>
       
       #overlay {
-        position: fixed;
+        position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
@@ -20,15 +22,24 @@
       }
       
       #overlay span {
-        position: relative;
-        left: 35%;
-        top: 25%;
+        position: absolute;
+        top:  30%;
+        left: 50%;
+        transform: translate(-50%,-50%);
         font-size: 100px;
         font-family: 'Press Start 2P', serif; 
         color: white;
       }
       
-  
+      #canvas2 {
+        width: 160px;
+        height: 150px;
+        position: relative;
+        left: 600px;
+        top: 210px;
+        
+      }
+    
           
     </style>
     <script src="p5.js"></script>
@@ -43,14 +54,22 @@
      <span>Pong</span>
      <button class="btn" onclick="on()"> Play</button>
    </div>
+    
+    <div class="mb10">
+    <div id="updatenote" class="updatenote mt10"> </div>
+  </div>
+  <video hidden="" class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
+
+  <canvas id="canvas2" class="border canvasbox"></canvas>
+    
     <div>
    <button class="backbtn" onclick="off()"><i class="fa fa-home"></i>
    <style position="relative" bottom="10" right="10"></style>
    </button>
-    <button class="video" onclick="cameraOn()"><i class="fa fa-video-camera"> On</i>
+    <button class="music" onclick="cameraOn()"><i class="fa fa-music"> On</i>
    <style position="relative" top="6" left="6"></style>
    </button>
-      <button class="video" onclick="cameraOff()"><i class="fa fa-video-camera"> Off</i>
+      <button class="music" onclick="cameraOff()"><i class="fa fa-music"> Off</i>
    <style position="relative" bottom="6" right="6"></style>
    </button>
       
@@ -58,19 +77,26 @@
     
     <video id="video" width="165" height="165" style="position:relative; bottom:440px; left:590px"></video>
     
+    <script src="carbon-components.js"></script>
+  <script src="handtrack.min.js"> </script>
     <script src="sketch.js"></script>
     
     <script>
        function on() {
   			document.getElementById("overlay").style.display = "none";
 			}
-
 	    function off() {
 			  document.getElementById("overlay").style.display = "block";
 			}
       function cameraOn() {
-        var video = document.getElementById('video');
-
+      /*  var video = document.getElementById("myvideo");
+        if (video.pause == true)
+        { 
+          video
+        }
+        
+        
+        /*      var video = document.getElementById('video');
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Not adding `{ audio: true }` since we only want video now
@@ -79,13 +105,12 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.play();
     });
-}
-
+}*/
       }
       
-      function cameraOff() {
-        var video = document.getElementById('video');
-
+      function cameraOff() { 
+        isVideo = false;
+  /*      var video = document.getElementById('video');
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Not adding `{ audio: true }` since we only want video now
@@ -94,12 +119,12 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.pause();
     });
-}
-
+} */
       }
       
      
     </script>
   
+
 
 </body></html>
