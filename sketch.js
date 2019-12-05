@@ -8,6 +8,7 @@ function cameraOn(){
 function cameraOff(){
   audio.pause();
 }
+
 const video = document.getElementById("myvideo");
 const canvas2 = document.getElementById("canvas2");
 const context2 = canvas2.getContext("2d");
@@ -117,19 +118,32 @@ canvas.height = height;
 var context = canvas.getContext('2d');
 
 
-
 window.onload = function() {
   document.body.appendChild(canvas);
   animate(step);
   
 };
 
-
-
 var step = function() {
   update();
   render();
+  if(CPUscore > 2)
+    {
+      context.font = "60px Black Ops One";
+      context.fillStyle = "#00E500";
+      context.fill();
+      context.fillText("CPU WINS! ", 135, 325);}
+  else if (Playerscore > 2)
+  {
+    context.font = "60px Black Ops One";
+    context.fillStyle = "#00E500";
+    context.fill();
+    context.fillText("PLAYER WINS! ", 135, 325);  
+  }
+  else
+  {
   animate(step);
+  }
 };
 
 var update = function() {
@@ -138,7 +152,6 @@ var update = function() {
 var render = function() {
   context.fillStyle = "#676767";
   context.fillRect(0, 0, width, height);
-  
 };
 
 
@@ -206,9 +219,23 @@ var ball = new Ball(200, 300);
 var render = function() {
   context.fillStyle = "#676767";
   context.fillRect(0, 0, width, height);
-  player.render();
-  computer.render();
-  ball.render();
+  if(CPUscore > 2 || Playerscore > 2)
+  {
+    var button = document.createElement("BUTTON");   // Create a <button> element
+    button.innerHTML = "PLAY AGAIN";  // Insert text
+    button.style = "#0080FF";
+    button.id = "gameoverbtn";
+    document.body.appendChild(button);
+    button.addEventListener ("click", function() {
+    document.location.reload(true);
+  });  
+  }
+  else
+  {
+      player.render();
+      computer.render();
+      ball.render();
+  }
 };
 
 var update = function() {
