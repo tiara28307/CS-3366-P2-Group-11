@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black Ops One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P">
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components@latest/css/carbon-components.css">
+    <link rel="stylesheet" href="track.css">
+  <style>
+      
+      #overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(64, 64, 64,1);
+        z-index: 3;
+        cursor: pointer;
+      }
+      
+      #overlay span {
+        position: absolute;
+        top:  30%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 100px;
+        font-family: 'Press Start 2P', serif; 
+        color: white;
+      }
+      
+      #canvas2 {
+        width: 160px;
+        height: 150px;
+        position: relative;
+        left: 600px;
+        top: 210px;
+        
+    }
+    
+    
+    
+    
+          
+    </style>
+    <script src="p5.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    
+
+  </head>
+  <body bgcolor="#0080FF">
+    
+    <canvas id="bg" width="640" height="480" style="position: absolute; z-index: 0"></canvas>
+    <div id="overlay">
+     <span>Pong</span>
+      <img src="arcade.png" class="image">
+     <button class="btn" onclick="on()"> Play</button>
+   </div>
+    
+    <div class="mb10">
+    <div id="updatenote" class="updatenote mt10"> </div>
+  </div>
+  <video hidden="" class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
+
+  <canvas id="canvas2" class="border canvasbox"></canvas>
+    
+    <div>
+   <button class="backbtn" onclick="off()"><i class="fa fa-home"></i>
+   <style position="relative" bottom="10" right="10"></style>
+      </button> 
+     <button class="videobtn" onclick="startVideo()"><i class="fa fa-video-camera"> On</i>
+   <style position="relative" bottom="10" right="10"></style>
+   </button>
+      <button class="videobtn" onclick="stopVideo()"><i class="fa fa-video-camera"> Off</i>
+   <style position="relative" bottom="10" right="10"></style>
+   </button>
+    <button class="music" onclick="cameraOn()"><i class="fa fa-music"> On</i>
+   <style position="relative" top="6" left="6"></style>
+   </button>
+      <button class="music" onclick="cameraOff()"><i class="fa fa-music"> Off</i>
+   <style position="relative" bottom="6" right="6"></style>
+   </button>
+      
+</div>
+    
+    <video id="video" width="165" height="165" style="position:relative; bottom:440px; left:590px"></video>
+    
+    <script src="carbon-components.js"></script>
+  <script src="handtrack.min.js"> </script>
+    <script src="sketch.js"></script>
+    
+    <script>
+       function on() {
+  			document.getElementById("overlay").style.display = "none";
+			}
+	    function off() {
+			  document.getElementById("overlay").style.display = "block";
+			}
+      
+      
+     
+    </script>
+  
+
+</body></html>
