@@ -40,7 +40,7 @@ function stopVideo() {
             isVideo = false;
             runDetection()
         } else {
-            updateNote.innerText = "Video still running"
+            updateNote.innerText = "Video Stopped Running"
         }
     });
 }
