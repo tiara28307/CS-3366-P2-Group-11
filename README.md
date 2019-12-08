@@ -36,7 +36,7 @@
 ![Capture1](https://user-images.githubusercontent.com/36643475/69992948-6b2d1c80-1510-11ea-9d9f-6990612f59cd.PNG)
 ![Capture](https://user-images.githubusercontent.com/36643475/69992951-6cf6e000-1510-11ea-9083-0bc63693f573.PNG)
 
-<a href="https://imgflip.com/gif/3is2z3"><img src="https://i.imgflip.com/3is2z3.gif" title="made at imgflip.com"/></a>
+
 
 #### Demo Link:
 https://tiara28307.github.io/CS-3366-P2-Group-11/
