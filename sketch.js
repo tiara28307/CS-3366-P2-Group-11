@@ -148,7 +148,7 @@ var step = function() {
     context.font = "60px Black Ops One";
     context.fillStyle = "#00E500";
     context.fill();
-    context.fillText("PLAYER WINS! ", 130, 325);  
+    context.fillText("PLAYER WINS! ", 130, 295);  
   }
   else
   {
