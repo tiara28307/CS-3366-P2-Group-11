@@ -24,13 +24,12 @@
 ![FinalProject (1)](https://user-images.githubusercontent.com/36643475/69385739-f5aa8c00-0c85-11ea-93fc-d8c065eac48d.png)
 
 #### Implementation
-- Early stages in implementation
-- Working on handtracking js query (motion sensor)
+- Complete
+- More user friendly interaction (easy to navigate)
 
 #### Plans Moving Forward
-- Functionality of UI
-- Revisions/Modifications improve interactivity
-- Testing 
+- Testing
+- Changes to design based on user input
 
 ## User Study
 ![Screen Shot 2019-12-02 at 10 26 02 AM](https://user-images.githubusercontent.com/36643475/69976196-327c4b80-14ee-11ea-805c-0c97737293fa.png)
