@@ -5,7 +5,6 @@ html, body {
   background-image: url('bg.png');
   background-repeat: no-repeat;
   background-size: 900px 900px;
-  height: 100%;
   zoom: 100%;
 }
 
