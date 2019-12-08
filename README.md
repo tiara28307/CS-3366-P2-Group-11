@@ -24,7 +24,7 @@
 ![FinalProject (1)](https://user-images.githubusercontent.com/36643475/69385739-f5aa8c00-0c85-11ea-93fc-d8c065eac48d.png)
 
 #### Implementation
-- Complete
+- Complete implementation
 - More user friendly interaction (easy to navigate)
 
 #### Plans Moving Forward
