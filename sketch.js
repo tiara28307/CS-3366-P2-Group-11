@@ -137,7 +137,7 @@ window.onload = function() {
 var step = function() {
   update();
   render();
-  if(CPUscore > 2)
+  if(CPUscore > 4)
     {
       context.font = "60px Black Ops One";
       context.fillStyle = "#00E500";
@@ -229,7 +229,7 @@ var ball = new Ball(200, 300);
 var render = function() {
   context.fillStyle = "#676767";
   context.fillRect(0, 0, width, height);
-  if(CPUscore > 2 || Playerscore > 2)
+  if(CPUscore > 4 || Playerscore > 2)
   {
     var button = document.createElement("BUTTON");   // Create a <button> element
     button.innerHTML = "PLAY AGAIN";  // Insert text
