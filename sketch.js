@@ -1,12 +1,35 @@
 var audio = new Audio('https://raw.githubusercontent.com/tiara28307/CS-3366-P2-Group-11/master/01%20-%20Title%20Theme.mp3');
 audio.play();
+var beep = new Audio('beep.mp3');
+var boop = new Audio('boop.wav');
+var badScore = new Audio('badScore.wav');
+var score = new Audio('score.wav');
+var cOn = new Audio('cameraon.wav');
+var cOff = new Audio('cameraOff.wav');
+var winS = new Audio('win.wav');
+var looseS = new Audio('loose.wav');
+
+setVolume(0);
+function setVolume(num){
+  beep.volume = num;
+  boop.volume = num;
+  score.volume = num;
+  badScore.volume = num;
+  cOn.volume = num;
+  cOff.volume = num;
+  winS.volume = num;
+  looseS.volume = num;
+}
+
 
 function cameraOn(){
   audio.play();
+  setVolume(1);
 }
 
 function cameraOff(){
   audio.pause();
+  setVolume(0);
 }
 
 const video = document.getElementById("myvideo");
@@ -39,8 +62,10 @@ function stopVideo() {
         if (status) {
             isVideo = false;
             runDetection()
+            cOff.play();
         } else {
             updateNote.innerText = "Video Stopped Running"
+            cOff.play();
         }
     });
 }
@@ -51,6 +76,7 @@ function startVideo() {
         if (status) {
             isVideo = true;
             runDetection()
+            cOn.play();
         } else {
             updateNote.innerText = "Please enable video"
         }
@@ -139,16 +165,21 @@ var step = function() {
   render();
   if(CPUscore > 2)
     {
+      audio.pause();
       context.font = "60px Black Ops One";
       context.fillStyle = "#00E500";
       context.fill();
-      context.fillText("CPU WINS! ", 130, 325);}
+      context.fillText("CPU WINS! ", 130, 325);
+      looseS.play();
+    }
   else if (Playerscore > 2)
   {
+    audio.pause();
     context.font = "60px Black Ops One";
     context.fillStyle = "#00E500";
     context.fill();
     context.fillText("PLAYER WINS! ", 130, 295);  
+    winS.play();
   }
   else
   {
@@ -279,6 +310,7 @@ Ball.prototype.update = function(paddle1, paddle2) {
 
   // Score tracker for player
   if(this.y < 0) {
+    score.play();
     this.x_speed = 0;
     this.y_speed = 3;
     this.x = 200;
@@ -287,6 +319,7 @@ Ball.prototype.update = function(paddle1, paddle2) {
   }
   // Score tracker for CPU
   if(this.y > 600) { 
+    badScore.play();
     this.x_speed = 0;
     this.y_speed = 3;
     this.x = 200;
@@ -297,6 +330,7 @@ Ball.prototype.update = function(paddle1, paddle2) {
   if(top_y > 300) {
     if(top_y < (paddle1.y + paddle1.height) && bottom_y > paddle1.y && top_x < (paddle1.x + paddle1.width) && bottom_x > paddle1.x) {
       // hit the player's paddle
+      beep.play();
       this.y_speed = -3;
       this.x_speed += (paddle1.x_speed / 2);
       this.y += this.y_speed;
@@ -304,6 +338,7 @@ Ball.prototype.update = function(paddle1, paddle2) {
   } else {
     if(top_y < (paddle2.y + paddle2.height) && bottom_y > paddle2.y && top_x < (paddle2.x + paddle2.width) && bottom_x > paddle2.x) {
       // hit the computer's paddle
+      boop.play();
       this.y_speed = 3;
       this.x_speed += (paddle2.x_speed / 2);
       this.y += this.y_speed;
